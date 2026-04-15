@@ -17,6 +17,8 @@ Objectives:
 -Prepare data for analytical queries.  
 
 
+
+
 Author
 
 Nestor Elvir
