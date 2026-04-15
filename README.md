@@ -6,9 +6,13 @@ This project focuses on building a complete data cleaning and modeling pipeline 
 
 Objectives:
 -Perform data cleansing on raw datasets.
+
 -Handle missing values, duplicates, and inconsistencies.
+
 -Standardize data formats (dates, text, IDs).
+
 -Design a data model (fact and dimension tables).
+
 -Prepare data for analytical queries.  
 
 
