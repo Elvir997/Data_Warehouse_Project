@@ -18,5 +18,7 @@ Objectives:
 
 
 Author
+
 Nestor Elvir
-Aspiring Data Analyst
+
+Data Analyst in Training
