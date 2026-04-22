@@ -1,0 +1,81 @@
+-- Verifying Bronze_erp_events for Silver Layer --
+-- -------------------------------------------- --
+
+
+select * from bronze_erp_events; 
+
+
+-- Checking for duplicates event_id and blank spaces
+
+select
+count(event_id)
+from bronze_erp_events
+group by event_id
+having count(*) > 1;
+
+select 
+event_id
+from bronze_erp_events
+where event_id != trim(event_id);
+
+
+-- Checking user_id and product_id blank spaces
+
+select
+user_id
+from bronze_erp_events
+where user_id != trim(user_id);
+
+select
+product_id
+from bronze_erp_events
+where product_id != trim(product_id);
+
+
+-- Checking event type formats and blank spaces
+
+select 
+event_type, 
+count(*) as total
+from bronze_erp_events
+group by event_type;
+
+
+select 
+event_type, 
+concat(
+upper(left(event_type, 1)), 
+lower(substring(event_type, 2))
+) as event_type2,
+count(*) as total
+from bronze_erp_events
+group by event_type;
+
+
+-- checking for event time
+
+select 
+min(event_date_time) as min_date,
+max(event_date_time) as max_date
+from bronze_erp_events;
+
+
+-- Final Query 
+
+insert into silver_erp_events (
+event_id,
+user_id,
+product_id,
+event_type,
+event_date_time)
+
+select 
+event_id,
+user_id,
+product_id,
+concat(
+upper(left(event_type, 1)), 
+lower(substring(event_type, 2))
+) as event_type,
+event_date_time
+from bronze_erp_events; 
