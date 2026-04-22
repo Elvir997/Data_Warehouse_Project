@@ -7,7 +7,12 @@
 
 create database e_commerce;
 
-use e_commerce;
+CALL Bronze_Layer_tables();
+
+DELIMITER $$
+create procedure Bronze_Layer_tables()
+
+BEGIN
 
 drop table if exists bronze_erp_events;
 create table bronze_erp_events (
@@ -24,8 +29,8 @@ order_id varchar(50),
 product_id varchar(50), 
 user_id varchar(50),
 quantity int,
-item_price int,
-item_total int
+item_price decimal(10, 2),
+item_total decimal(10, 2)
 );
 
 drop table if exists bronze_crm_orders;
@@ -34,7 +39,7 @@ order_id varchar(50),
 user_id varchar(50),
 order_date DATETIME, 
 order_status varchar(50),
-total_amount int
+total_amount decimal(10, 2)
 );
 
 drop table if exists bronze_erp_products;
@@ -43,8 +48,8 @@ product_id varchar(50),
 product_name varchar(50),
 category varchar(50), 
 brand varchar(50),
-price int,
-rating int
+price decimal(10, 2),
+rating decimal(10, 2)
 );
 
 drop table if exists bronze_crm_reviews;
@@ -68,3 +73,7 @@ email varchar(50),
 city varchar(50),
 signup_date DATE
 );
+
+END $$
+
+DELIMITER ;
