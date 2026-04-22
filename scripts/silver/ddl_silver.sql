@@ -1,5 +1,7 @@
 
+-- DDL Scripts: Create Silver tables
 
+-- Purpose: These script creates tables in silver layer, defining the structure of each table. 
 
 
 
