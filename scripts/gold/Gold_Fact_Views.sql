@@ -71,9 +71,9 @@ p.product_key,
 u.user_key,
 r.rating,
 r.review_text,
-date(r.review_date_time) as review_date,
-time(r.review_date_time) review_time
-from bronze_crm_reviews r
+date(r.review_date) as review_date,
+time(r.review_date) review_time
+from silver_crm_reviews r
 left join silver_crm_sales s 
 on r.order_id = s.order_id
 left join gold_dim_products p
